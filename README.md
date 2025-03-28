@@ -91,32 +91,6 @@ Response:
 
 ---
 
-## 🐳 Run with Docker (Optional)
-
-### 1. Create Dockerfile
-
-```dockerfile
-FROM python:3.10
-
-WORKDIR /app
-
-COPY . .
-
-RUN pip install --no-cache-dir -r requirements.txt
-
-EXPOSE 8000
-
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
-```
-
-### 2. Build and Run
-
-```bash
-docker build -t bankruptcy-api .
-docker run -p 8000:8000 bankruptcy-api
-```
-
----
 
 ## 🧭 Architecture Diagram
 
@@ -154,22 +128,8 @@ Bankruptcy_API/
 ├── model.joblib
 ├── scaler.joblib
 ├── requirements.txt
-├── Dockerfile
 └── README.md
 ```
 
 ---
 
-## 🎥 Video Submission Tips
-
-- Walk through `main.py`, dataset, API `/predict`
-- Run locally and show predictions for 0 and 1
-- Keep it under 10 minutes
-- Show your face (use OBS Studio, Teams, Zoom)
-
----
-
-## 📞 Questions?
-
-Contact: [Your Email Here]  
-GitHub: [@aseemsyed10](https://github.com/aseemsyed10)
