@@ -5,3 +5,6 @@ scikit-learn
 joblib
 numpy
 pydantic
+shap
+plotly
+pandas
