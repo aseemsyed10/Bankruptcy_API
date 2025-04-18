@@ -74,3 +74,26 @@ def predict(data: InputData):
 # Uncomment to run the API directly (optional)
 # if __name__ == "__main__":
 #     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+
+@app.post("/explain")
+def explain(data: InputData):
+    try:
+        # Prepare input
+        X = np.array(data.features).reshape(1, -1)
+        X_scaled = scaler.transform(X)
+
+        # Compute SHAP values
+        shap_values = explainer(X_scaled)
+        shap_list = shap_values.values[0].tolist()
+        feature_names = [f"Feature {i+1}" for i in range(len(shap_list))]
+        feature_values = X[0].tolist()
+
+        return {
+            "shap_values": shap_list,
+            "feature_names": feature_names,
+            "feature_values": feature_values
+        }
+
+    except Exception as e:
+        return {"error": str(e)}
+
